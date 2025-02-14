@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Question</title>
+    <style>
+        body {
+            background-color: #ffccdc;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: #d63384;
+            background: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Ctext x=%225%22 y=%2215%22 font-family=%22Arial%22 font-size=%2212%22 fill=%22%23d63384%22%3Eplease%3C/text%3E%3C/svg%3E') repeat;
+        }
+
+        .container {
+            margin-top: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+        }
+
+        button {
+            font-size: 1.5rem;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .yes {
+            background-color: #ff4081;
+            color: white;
+        }
+
+        .yes:hover {
+            background-color: #e6005c;
+            transform: scale(1.1);
+        }
+
+        .no {
+            background-color: #ff80ab;
+            color: white;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .no:hover {
+            background-color: #ff4d94;
+            transform: scale(1.1);
+        }
+
+        img {
+            width: 80%;
+            max-width: 300px;
+            margin-top: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @keyframes dance {
+            0% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(-10deg) scale(1.1); }
+            50% { transform: rotate(10deg) scale(1.1); }
+            75% { transform: rotate(-10deg) scale(1.1); }
+            100% { transform: rotate(0deg) scale(1); }
+        }
+
+        .dance {
+            animation: dance 0.5s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="question">
+        <h1>Will you be my Valentine's Nomi? 💖</h1>
+        <img id="me" src="me.png" alt="me">
+        <div class="buttons">
+            <button class="yes" onclick="sayYes()">Yes</button>
+            <button class="no" onclick="moveNo()">No</button>
+        </div>
+    </div>
+    <div class="container hidden" id="final">
+        <h1>THATS MY LATINA BOMBER! 💘 I LOVE YOUUUU! Happy Valentine's Day BBY! 🎉</h1>
+        <img id="dance-image" src="IMG_9274.png" alt="Celebration Image">
+    </div>
+
+    <script>
+        let noClicked = false;
+        function sayYes() {
+            document.getElementById('question').classList.add('hidden');
+            document.getElementById('final').classList.remove('hidden');
+            document.getElementById('dance-image').classList.add('dance');
+        }
+        function moveNo() {
+            let noButton = document.querySelector('.no');
+            let x = (Math.random() - 0.5) * (window.innerWidth * 0.8);
+            let y = (Math.random() - 0.5) * (window.innerHeight * 0.5);
+            noButton.style.position = "absolute";
+            noButton.style.transform = `translate(${x}px, ${y}px)`;
+            document.getElementById('main-image').src = "https://i.imgur.com/QN4a8E3.png";
+        }
+    </script>
+</body>
+</html>
